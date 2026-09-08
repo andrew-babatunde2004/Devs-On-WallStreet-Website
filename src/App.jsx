@@ -18,7 +18,7 @@ export default function App() {
         </ul>
       </nav> 
       <div className="hero-copy">
-        <h1>We build at the speed of the market.</h1>
+        <h1>"Work In Progress Header Quote."</h1>
         <p>
           The University of Georgia's only student-run FinTech organization, focused on creating the next
            generation of financial technology.

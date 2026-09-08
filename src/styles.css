@@ -7,13 +7,15 @@ body { margin: 0; min-width: 320px; }
 .nav {
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items:start;  
+    justify-content: center;
+    align-items: center;
 }
 
 .nav-links {
     display: flex;
     gap: 24px;
+    margin: 0;
+    padding: 0;
     list-style: none;
 }
 
@@ -36,7 +38,12 @@ body { margin: 0; min-width: 320px; }
   background-size: 80px 80px;
 }
 
-.hero-copy { max-width: 900px; }
+.hero-copy {
+  max-width: 900px;
+  align-self: flex-start;
+  margin-top: auto;
+  margin-bottom: auto;
+}
 
 h1 {
   margin: 0;
