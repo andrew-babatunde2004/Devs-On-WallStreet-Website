@@ -1,29 +1,46 @@
+import { useEffect, useState } from 'react'
+import MemberPage from './memberpage'
+import Footer from './Footer'
+
 export default function App() {
+  const [hash, setHash] = useState(() => window.location.hash)
+
+  useEffect(() => {
+    const handleHashChange = () => setHash(window.location.hash)
+    window.addEventListener('hashchange', handleHashChange)
+    return () => window.removeEventListener('hashchange', handleHashChange)
+  }, [])
+
+  const isMembersPage = hash === '#members'
+
   return (
-    <main className="hero">
-      <nav className="nav">
+    <>
+    <div className="hero">
+      <nav className="nav" aria-label="Main navigation">
         <ul className="nav-links">
           <li>
-            <a href="#">Home</a>
+            <a href="#home" aria-current={!isMembersPage ? 'page' : undefined}>Home</a>
           </li>
           <li>
-            <a href="#">About</a>
+            <a href="#about">About</a>
           </li>
           <li>
-            <a href="#">Members</a>
+            <a href="#members" aria-current={isMembersPage ? 'page' : undefined}>Members</a>
           </li>
           <li>
-            <a href="#">Contact</a>
+            <a href="#contact">Contact</a>
           </li>
         </ul>
       </nav> 
-      <div className="hero-copy">
+      {isMembersPage ? <MemberPage /> : <main id="home" className="hero-copy">
         <h1>"Work In Progress Header Quote."</h1>
-        <p>
+        <p id="about">
           The University of Georgia's only student-run FinTech organization, focused on creating the next
            generation of financial technology.
         </p>
-      </div>
-    </main>
+      </main>}
+    </div>
+    <Footer />
+    </>
   )
 }
